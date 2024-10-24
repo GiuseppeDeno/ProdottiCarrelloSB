@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prodotto Inserito</title>
+       <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+       <!-- Collegamento al file CSS personalizzato  <link rel="stylesheet" href="/css/styles.css"> -->
+        <link rel="stylesheet" href="/css/style.css">
+   
+</head>
+<body>
+<div class="container"> 
+  <h1>Prodotto Inserito con Successo!</h1>
+    <!-- nel controller  prodotto.nome perche in m1.addAttribute ho prodotto  m1.addAttribute("prodotto", p1);-->
+    <p>Nome: <span th:text="${prodotto.nome}"></span></p>
+    <p>Marca: <span th:text="${prodotto.marca}"></span></p>
+    <p>Prezzo: <span th:text="${prodotto.prezzo}"></span></p>
+   <img th:src="${prodotto.url}" alt="Immagine Prodotto">
+    
+     <!-- NOTA BENE  Bottone per tornare alla homepage  metodo GET reindirizza alla rotta /, 
+     che dovrebbe mappare la homepage
+    nel controller ce un metodo che risponde alla rotta / e restituisce index.html).
+    //facendo action "/" viene richiamato il metodo getIndex che reindirizza all index -->
+    <form action="/" method="GET">
+        <input type="submit" value="Inserisci un altro prodotto">
+    </form>
+<br>
+    <form action="/listaProdottiForm" method="GET">
+        <input type="submit" value="Visualizza tutti i prodotti">
+    </form>
+
+
+
+</div>
+  
+</body>
+</html>

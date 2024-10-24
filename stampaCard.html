@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Prodotti</title>
+    <!--  metto gli stili di Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Collegamento al file CSS personalizzato   <link rel="stylesheet" href="/css/styles.css"> -->
+    <link rel="stylesheet" href="/css/style.css">
+</head>
+<body>
+
+<div class="container">
+
+<h1>Lista dei Prodotti Selezionati</h1>
+<!-- Abbiamo creato un form che risponde all rotta /process con il metodo POST  -->
+<form action="/process" method="POST">
+        <table>
+            <thead>
+                <tr>
+                    <th>Nome</th>
+                    <th>Marca</th>
+                    <th>Immagine</th>
+                    <th>Seleziona</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr th:each="prodotto : ${lista}">
+                    <td th:text="${prodotto.nome}"></td>
+                    <td th:text="${prodotto.marca}"></td>
+                    <td><img th:src="${prodotto.url}" alt="Immagine Prodotto"></td>
+                    <td>
+                    <!-- setto valore minimo a zero per la quantita di prodotti metto MIN=0 per evitare di mettere valori negativi   -->
+                        <input type="number" name="num" value="0" min="0">
+                        <input type="hidden" name="nome" th:value="${prodotto.nome}">
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <input type="submit" value="Invia">
+    </form>
+
+<!-- //andando a stampare i prodotti selezionati prendo la lista prodottiSelezionati -->
+    <h3>Prodotti Selezionati:</h3>
+  <!-- https://docs.google.com/presentation/d/1Cvx3gtFTTJa1yMXF_m3PoUEWqpgsCvFGuMJkWYP1tPw/edit#slide=id.g2c933dab703_0_54 slide 19 per th:if  -->  
+    <div class="row" th:if="${prodottiSelezionati != null}">
+    
+    
+        <div class="col l4" th:each="prodotto : ${prodottiSelezionati}">
+            <div class="card">
+                <div class="card-image">
+                    <img th:src="${prodotto.url}" alt="Immagine Prodotto" style="object-fit: cover; height: 200px;">
+                    <span class="card-title" th:text="${prodotto.nome}"></span>
+                </div>
+                <div class="card-content">
+                    <p>Marca: <span th:text="${prodotto.marca}"></span></p>
+                    <p>Prezzo: <span th:text="${prodotto.prezzo} + ' €'"></span></p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <hr>
+
+    <h3>Lista  Catalogo di tutti i  prodotti inseriti  (card materialize)</h3>
+    
+    <div class="row">  
+   <!--  class="col s12 m6 l4"  per tener conto degli schermi piu piccoli  l4 vuol dire che ne stampa 3  poiche le colonne sono 12--> 
+        <div class="col  l4" th:each="prodotto : ${lista}">
+            <div class="card">
+                <div class="card-image">
+                    <img th:src="${prodotto.url}" alt="Immagine Prodotto" style="object-fit: cover; height: 200px;">
+                    <span class="card-title" th:text="${prodotto.nome}"></span>
+                </div>
+                <div class="card-content">
+                    <p>Marca: <span th:text="${prodotto.marca}"></span></p>
+                    <p>Prezzo: <span th:text="${prodotto.prezzo} + ' €'"></span></p>
+                </div>
+                <div class="card-action">
+                    <a href="#">Ulteriori informazioni</a>
+                </div>
+            </div>
+        </div>
+    </div>
+     <form action="/" method="GET">
+        <input type="submit" value="Inserisci un altro prodotto">
+    </form>
+</div>
+
+
+</body>
+</html>
+

@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pagina di form</title>
+    <!--  metto gli stili di Materialize -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+    <!-- Collegamento al file CSS personalizzato nella cartella css di static ?  <link rel="stylesheet" href="/css/styles.css">  -->
+    
+     <link rel="stylesheet" href="/css/style.css">
+</head>
+
+<body>
+<div class="container"> 
+    <h1>Form per inserire un prodotto</h1>
+    
+  <!--  //questo /submit  è mappato nel controller e prende i dati dal form attraverso il metodo getData  -->  
+    <form action="/submit" method="POST">
+        <label for="nome">INSERISCI NOME:</label>
+        <input type="text" name="nome" required>
+        
+        <label for="marca">INSERISCI MARCA:</label>
+        <input type="text" name="marca" required>
+        
+        <label for="prezzo">INSERISCI PREZZO:</label>
+        <input type="number" name="prezzo" required>
+        
+         <label for="url">INSERISCI url immagine:</label>
+        <input type="text" name="url" required>
+        
+        <input type="submit" value="Invia">
+    </form>
+    
+    <p>Form per visualizzare la lista dei prodotti</p>
+
+    <form action="/listaProdottiForm" method="GET">
+        <input type="submit" value="Visualizza i prodotti">
+    </form>
+    </div>
+</body>
+</html>

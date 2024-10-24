@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="it">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lista Prodotti</title>
+     <!--  metto gli stili di materialize  -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/1.0.0/css/materialize.min.css">
+</head>
+
+
+<body>
+
+<div class="container">
+          <h1>Lista dei prodotti inseriti</h1>
+    
+    <ul>  
+    <!-- nel controller che stampa la listadei prodotti     m1.addAttribute("lista", listaProdotti); ho chimato "lista e quindi qui metto lista -->
+      <!--    <li th:each="prodotto : ${lista}">
+           <!--  oppure piu semplicemente 
+            <span th:text="${prodotto.nome}"></span>
+            <span th:text="${prodotto.marca}"></span>
+            <span th:text="${prodotto.prezzo}"></span>
+            
+           - vengono stampati uno sotto l'altro 
+              <p>Nome: <span th:text="${prodotto.nome}"></span></p>
+             <p>Marca: <span th:text="${prodotto.marca}"></span></p>
+             <p>Prezzo: <span th:text="${prodotto.prezzo}"></span></p>
+             
+       
+        </li> -->
+        
+        
+         <li th:each="prodotto : ${lista}">
+            <span th:text=" ' Nome:  ' + ${prodotto.nome}"></span>, 
+            <span th:text=" ' Marca:  ' + ${prodotto.marca}"></span>, 
+            <span th:text=" ' Prezzo:  ' + ${prodotto.prezzo} + ' €'"></span>
+           <img th:src="${prodotto.url}" alt="Immagine Prodotto">
+        </li>
+    </ul>
+      </div>
+  
+</body>
+</html>

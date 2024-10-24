@@ -1,0 +1,23 @@
+body{
+	  background-color: #f5f5dc!important;
+	
+}
+
+/*<!--cambio colore della scritta sulle card -->*/
+.card-title
+{  font-weight: bold;         
+    font-family: Arial, sans-serif;
+     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8) !important;
+	color:white !important;
+}
+
+input{
+	border-radius:20px;
+	background-color:white;
+	padding:10px;
+}
+
+input:hover{
+	background-color:#f5f5dc;
+	color:black;
+}
